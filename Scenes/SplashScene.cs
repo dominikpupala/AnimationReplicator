@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using MonoGame.Framework.WpfInterop;
@@ -9,8 +11,15 @@ namespace AnimationReplicator.Scenes
     class SplashScene : WpfGame
     {
         private IGraphicsDeviceService _graphicsDeviceManager;
+        private SpriteBatch _spriteBatch;
         private WpfKeyboard _keyboard;
         private WpfMouse _mouse;
+
+        private Texture2D _texture;
+        private Vector2 _position;
+        private float _rotation;
+        private Vector2 _origin;
+        private Vector2 _scale;
 
         protected override void Initialize()
         {
@@ -30,8 +39,19 @@ namespace AnimationReplicator.Scenes
             // content loading now possible
         }
 
+        protected override void LoadContent()
+        {
+            _spriteBatch = new SpriteBatch(_graphicsDeviceManager.GraphicsDevice);
+            _texture = Content.Load<Texture2D>("monogame-logo");
+        }
+
         protected override void Update(GameTime time)
         {
+            _position = GraphicsDevice.Viewport.Bounds.Center.ToVector2();
+            _rotation = (float)Math.Sin(time.TotalGameTime.TotalSeconds) / 4f;
+            _origin = _texture.Bounds.Center.ToVector2();
+            _scale = Vector2.One;
+
             // every update we can now query the keyboard & mouse for our WpfGame
             var mouseState = _mouse.GetState();
             var keyboardState = _keyboard.GetState();
@@ -40,6 +60,10 @@ namespace AnimationReplicator.Scenes
         protected override void Draw(GameTime time)
         {
             _graphicsDeviceManager.GraphicsDevice.Clear(Color.Pink);
+
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(_texture, _position, null, Color.White, _rotation, _origin, _scale, SpriteEffects.None, 0f);
+            _spriteBatch.End();
         }
     }
 }
