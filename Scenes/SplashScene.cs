@@ -43,6 +43,8 @@ namespace AnimationReplicator.Scenes
         {
             _spriteBatch = new SpriteBatch(_graphicsDeviceManager.GraphicsDevice);
             _texture = Content.Load<Texture2D>("monogame-logo");
+
+            //_texture = Texture2D.FromFile(_graphicsDeviceManager.GraphicsDevice, @"Content/Rat.png");
         }
 
         protected override void Update(GameTime time)

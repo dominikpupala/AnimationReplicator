@@ -12,7 +12,8 @@
     <PackageReference Include="MonoGame.Framework.WpfInterop" Version="1.9.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\"/>
+    <Folder Include="Models\" />
+    <Folder Include="Utility\" />
   </ItemGroup>
 
 </Project>

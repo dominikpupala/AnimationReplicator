@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AnimationReplicator
+namespace AnimationReplicator.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SplashView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SplashView : UserControl
     {
-        public MainWindow()
+        public SplashView()
         {
             InitializeComponent();
         }
