@@ -10,11 +10,14 @@
     <Window.DataContext>
         <viewmodels:MainViewModel/>
     </Window.DataContext>
-    
+
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewmodels:SplashViewModel}">
             <local:SplashView/>
-        </DataTemplate>        
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:TestViewModel}">
+            <local:TestView/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -23,6 +26,11 @@
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
 
+        <StackPanel Grid.Column="0">
+            <TextBox Text="{Binding TestInput}"/>
+            <Button Content="Reload" Command="{Binding ReloadCommand}"/>
+        </StackPanel>
+        
         <ContentControl Grid.Column="1" Content="{Binding CurrentScene}"/>
     </Grid>
 </Window>
